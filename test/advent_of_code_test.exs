@@ -21,4 +21,16 @@ defmodule AdventOfCodeTest do
   test "91212129 sums as 9" do
     assert AdventOfCode.inverseCaptcha(91212129) == 9
   end
+
+  test "1212 checksums to 6" do
+    assert AdventOfCode.interlacedChecksum(1212) == 6
+  end
+
+  test "1221 checksums to 0" do
+    assert AdventOfCode.interlacedChecksum(1221) == 0
+  end
+
+  test "123425 checksums to 4" do
+    assert AdventOfCode.interlacedChecksum(123425) == 4
+  end
 end
