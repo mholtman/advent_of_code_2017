@@ -1,20 +1,4 @@
-defmodule AdventOfCode do
-  @moduledoc """
-  Documentation for AdventOfCode.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> AdventOfCode.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
+defmodule AdventOfCode.DayOne do
 
   def inverseCaptcha(number) do
     Integer.digits(number)
