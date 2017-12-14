@@ -11,5 +11,9 @@ defmodule AdventOfCodeDayTwoTest do
        [7 ,5, 3],
        [2, 4, 6, 8]]) == 18
   end
+
+  test "file has expected number of rows" do
+    assert length(AdventOfCode.DayTwo.parse_input("test/day_two_data.txt")) == 17
+  end
 end
 
