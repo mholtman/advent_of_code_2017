@@ -29,17 +29,11 @@ defmodule AdventOfCode do
 
   def interlacedChecksum(number) do
     digits = Integer.digits(number)
+    list_length = length(digits)
+    [primary_list, secondary_list] = Enum.chunk(digits, round(list_length/2))
 
-    Enum.concat(digits, digits)
-    |> chunkByHalfLength
-    |> Enum.filter(fn([i,j]) -> i == j end)
-    |> Enum.reduce(0, fn([x,y], acc) -> x + acc end)
+    Enum.zip(primary_list, secondary_list)
+    |> Enum.filter(fn({i,j}) -> i == j end)
+    |> Enum.reduce(0, fn({x,y}, acc) -> x + y + acc end)
   end
-
-  defp chunkByHalfLength(digits) do
-    originalLength = trunc(length(digits)/2)
-    for n <- Enum.take(digits, originalLength),
-      do: [n, Enum.at(digits, trunc(n + originalLength/2) - 1)]
-  end
-
 end

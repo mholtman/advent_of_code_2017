@@ -33,4 +33,16 @@ defmodule AdventOfCodeTest do
   test "123425 checksums to 4" do
     assert AdventOfCode.interlacedChecksum(123425) == 4
   end
+
+  test "123123 checksums to 12" do
+    assert AdventOfCode.interlacedChecksum(123123) == 12
+  end
+
+  test "12131415 checksums to 4" do
+    assert AdventOfCode.interlacedChecksum(12131415) == 4
+  end
+
+  test "48954796 checksums to 26" do
+    assert AdventOfCode.interlacedChecksum(48954796) == 26
+  end
 end
