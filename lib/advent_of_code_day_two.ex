@@ -14,5 +14,14 @@ defmodule AdventOfCode.DayTwo do
     file
     |> File.read!
     |> String.split("\n")
+    |> List.delete_at(-1)
+  end
+
+  def checksum_file(file) do
+    parse_input(file)
+    |> Enum.map(fn(x) -> String.split(x, "\t")
+                          |> Enum.map(fn(x) -> String.to_integer(x) end)
+                        end)
+    |> difference_sum
   end
 end
