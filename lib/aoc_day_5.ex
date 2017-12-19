@@ -5,10 +5,13 @@ defmodule AoC.DayFive do
 
     new_list = List.replace_at(list, index, current_value + 1)
 
-    {new_list, current_value + index}
+    {:ok, new_list, current_value + index}
   end
 
   def jump_from_index(list, index) when index >= length(list) do
-    :escaped_minotaur
+    {:escaped_minotaur, list, index}
+  end
+
+  def escape_the_maze(list) do
   end
 end
