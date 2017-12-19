@@ -14,7 +14,7 @@ defmodule AdventOfCode.DayTwo do
 
 
   def checksum_file(file) do
-    Helpers.enumerate_file_by_line(file)
+    Helpers.enumerate_file_per_line(file)
     |> Enum.map(fn(x) -> String.split(x, "\t")
                           |> Enum.map(fn(x) -> String.to_integer(x) end)
                         end)
@@ -31,7 +31,7 @@ defmodule AdventOfCode.DayTwo do
     divide_list(sorted_numbers)
   end
 
-  def divide_list([head | tail]) do
+  def divide_list([_head | tail]) do
     divide_list(tail)
   end
 
