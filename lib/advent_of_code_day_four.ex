@@ -1,9 +1,8 @@
 defmodule AoC.DayFour do
+  alias AoC.Helpers
 
   def number_of_valid_passphrases_in_file(file_path, validator) do
-    file_path
-    |> File.read!
-    |> String.split("\n", trim: true)
+    Helpers.enumerate_file_per_line(file_path)
     |> Enum.filter(validator)
     |> length
   end

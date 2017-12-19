@@ -1,5 +1,7 @@
 defmodule AdventOfCode.DayTwo do
 
+  alias AoC.Helpers
+
   def min_max_checksum(list) do
     [largest, smallest] = [Enum.max(list), Enum.min(list)]
     largest - smallest
@@ -10,15 +12,9 @@ defmodule AdventOfCode.DayTwo do
     |> Enum.sum()
   end
 
-  def parse_input(file) do
-    file
-    |> File.read!
-    |> String.split("\n")
-    |> List.delete_at(-1)
-  end
 
   def checksum_file(file) do
-    parse_input(file)
+    Helpers.enumerate_file_by_line(file)
     |> Enum.map(fn(x) -> String.split(x, "\t")
                           |> Enum.map(fn(x) -> String.to_integer(x) end)
                         end)

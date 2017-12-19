@@ -12,10 +12,6 @@ defmodule AdventOfCodeDayTwoTest do
        [2, 4, 6, 8]]) == 18
   end
 
-  test "file has expected number of rows" do
-    assert length(AdventOfCode.DayTwo.parse_input("test/day_two_data.txt")) == 16
-  end
-
   # test "can find two numbers in list that divide with no remainder" do
   #   assert AdventOfCode.DayTwo.no_remainder_answer([5, 9, 2, 8]) == 4
   # end
