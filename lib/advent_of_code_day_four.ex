@@ -19,4 +19,16 @@ defmodule AoC.DayFour do
     |> Enum.filter(fn(x) -> is_valid_passphrase(x) end)
     |> length
   end
+
+  def is_super_valid_passphrase(input) do
+    number_of_words = String.split(input)
+                      |> length
+
+    number_of_non_anagrams = String.split(input)
+                             |> Enum.map(fn(x) -> String.graphemes(x) |> Enum.sort end)
+                             |> Enum.uniq
+                             |> length
+
+    number_of_words == number_of_non_anagrams
+  end
 end
