@@ -4,7 +4,7 @@ defmodule AoC.DayFour do
     file_path
     |> File.read!
     |> String.split("\n", trim: true)
-    |> Enum.filter(fn(x) -> validator.(x) end)
+    |> Enum.filter(validator)
     |> length
   end
 
