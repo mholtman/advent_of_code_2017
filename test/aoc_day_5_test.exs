@@ -12,4 +12,8 @@ defmodule AoC.DayFive.Test do
   test "jumping out of the list escapes the minotaur" do
     assert(AoC.DayFive.jump_from_index([0, 1, 2, 3], 2) == {[0, 1, 3, 3], 4})
   end
+
+  test "passing an index out of bounds escapes the minotaur" do
+    assert(AoC.DayFive.jump_from_index([0, 1, 3, 3], 4) == :escaped_minotaur)
+  end
 end
