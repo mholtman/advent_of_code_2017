@@ -1,5 +1,13 @@
 defmodule AoC.DayFour do
 
+  def number_of_valid_passphrases_in_file(file_path, validator) do
+    file_path
+    |> File.read!
+    |> String.split("\n", trim: true)
+    |> Enum.filter(fn(x) -> validator.(x) end)
+    |> length
+  end
+
   def is_valid_passphrase(input) do
     number_of_words = String.split(input)
                       |> length
@@ -9,14 +17,6 @@ defmodule AoC.DayFour do
                               |> length
 
     number_of_words == number_of_unique_words
-  end
-
-  def number_of_valid_passphrases_in_file(file_path) do
-    file_path
-    |> File.read!
-    |> String.split("\n", trim: true)
-    |> Enum.filter(fn(x) -> is_valid_passphrase(x) end)
-    |> length
   end
 
   def is_super_valid_passphrase(input) do
@@ -31,11 +31,4 @@ defmodule AoC.DayFour do
     number_of_words == number_of_non_anagrams
   end
 
-  def number_of_non_anagram_passphrases_in_file(file_path) do
-    file_path
-    |> File.read!
-    |> String.split("\n", trim: true)
-    |> Enum.filter(fn(x) -> is_super_valid_passphrase(x) end)
-    |> length
-  end
 end
