@@ -51,10 +51,10 @@ defmodule AoC.DayFive do
     end
   end
 
-  def escape_maze_from_file(file_path) do
+  def escape_maze_from_file(file_path, escape_plan) do
     maze = Helpers.enumerate_file_per_line(file_path)
            |> Enum.map(fn(x) -> String.to_integer(x) end)
 
-    escape_the_maze(maze, 0, 0)
+    escape_plan.(maze, 0, 0)
   end
 end
