@@ -1,4 +1,5 @@
 defmodule AoC.DayFive do
+  alias AoC.Helpers
 
   def jump_from_index(list, acc, index) do
     if index < length(list) do
@@ -20,5 +21,12 @@ defmodule AoC.DayFive do
                                                                     else
                                                                       {:escaped_minotaur, _, acc, _} -> {:escaped_minotaur, acc}
     end
+  end
+
+  def escape_maze_from_file(file_path) do
+    maze = Helpers.enumerate_file_per_line(file_path)
+           |> Enum.map(fn(x) -> String.to_integer(x) end)
+
+    escape_the_maze(maze, 0, 0)
   end
 end
