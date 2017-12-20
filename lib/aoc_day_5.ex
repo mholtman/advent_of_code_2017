@@ -13,4 +13,12 @@ defmodule AoC.DayFive do
     end
 
   end
+
+  def escape_the_maze(list, acc, index) do
+    with {:ok, list, acc, index} <- jump_from_index(list, acc, index) do
+      escape_the_maze(list, acc, index)
+                                                                    else
+                                                                      {:escaped_minotaur, _, acc, _} -> {:escaped_minotaur, acc}
+    end
+  end
 end

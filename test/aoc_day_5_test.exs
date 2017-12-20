@@ -17,4 +17,7 @@ defmodule AoC.DayFive.Test do
     assert(AoC.DayFive.jump_from_index([0, 1, 3, 3], 0, 4) == {:escaped_minotaur, [0, 1, 3, 3], 0, 4})
   end
 
+  test "escpae the maze" do
+    assert(AoC.DayFive.escape_the_maze([0, 3, 0, 1, -3], 0, 0) == {:escaped_minotaur, 5})
+  end
 end
