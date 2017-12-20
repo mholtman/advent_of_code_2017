@@ -20,4 +20,12 @@ defmodule AoC.DayFive.Test do
   test "escpae the maze" do
     assert(AoC.DayFive.escape_the_maze([0, 3, 0, 1, -3], 0, 0) == {:escaped_minotaur, 5})
   end
+
+  test "jumping from a value greater than 2 will decrement that value" do
+    assert(AoC.DayFive.modified_jump([0, 1, 2, 3], 0, 3) == {:ok, [0, 1, 2, 2], 1, 6})
+  end
+
+  test "list values greater than 2 now cause a decrement of 1" do
+    assert(AoC.DayFive.modified_escape_the_maze([0, 3, 0, 1, -3], 0, 0) == {:escaped_minotaur, 10})
+  end
 end
