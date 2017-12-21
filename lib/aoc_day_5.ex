@@ -1,29 +1,29 @@
 defmodule AoC.DayFive do
   alias AoC.Helpers
 
-  def jump_from_index(list, acc, index) do
-    if index < length(list) do
+  def jump_from_index(list, list_length, acc, index) do
+    if index < list_length do
       current_value = Enum.at(list, index)
 
       new_list = List.replace_at(list, index, current_value + 1)
 
-      {:ok, new_list, acc + 1, current_value + index}
+      {:ok, new_list, list_length, acc + 1, current_value + index}
 
     else
-      {:escaped_minotaur, list, acc, index}
+      {:escaped_minotaur, list, list_length, acc, index}
     end
 
   end
 
-  def modified_jump(list, acc, index) do
-    if index < length(list) do
+  def modified_jump(list, list_length, acc, index) do
+    if index < list_length do
       current_value = Enum.at(list, index)
 
       new_list = List.replace_at(list, index, determine_value(current_value))
 
-      {:ok, new_list, acc + 1, (current_value + index)}
+      {:ok, new_list, list_length, acc + 1, (current_value + index)}
     else
-      {:escaped_minotaur, list, acc, index}
+      {:escaped_minotaur, list, list_length, acc, index}
     end
   end
 
@@ -35,19 +35,19 @@ defmodule AoC.DayFive do
     end
   end
 
-  def escape_the_maze(list, acc, index) do
-    with {:ok, list, acc, index} <- jump_from_index(list, acc, index) do
-      escape_the_maze(list, acc, index)
+  def escape_the_maze(list, list_length, acc, index) do
+    with {:ok, list, list_length, acc, index} <- jump_from_index(list, list_length, acc, index) do
+      escape_the_maze(list, list_length, acc, index)
     else
-      {:escaped_minotaur, _, acc, _} -> {:escaped_minotaur, acc}
+      {:escaped_minotaur, _, _, acc, _} -> {:escaped_minotaur, acc}
     end
   end
 
-  def modified_escape_the_maze(list, acc, index) do
-    with {:ok, list, acc, index} <- modified_jump(list, acc, index) do
-      modified_escape_the_maze(list, acc, index)
+  def modified_escape_the_maze(list, list_length, acc, index) do
+    with {:ok, list, list_length, acc, index} <- modified_jump(list, list_length, acc, index) do
+      modified_escape_the_maze(list, list_length, acc, index)
     else
-      {:escaped_minotaur, _, acc, _} -> {:escaped_minotaur, acc}
+      {:escaped_minotaur, _, _, acc, _} -> {:escaped_minotaur, acc}
     end
   end
 
@@ -55,6 +55,6 @@ defmodule AoC.DayFive do
     maze = Helpers.enumerate_file_per_line(file_path)
            |> Enum.map(fn(x) -> String.to_integer(x) end)
 
-    escape_plan.(maze, 0, 0)
+    escape_plan.(maze, length(maze), 0, 0)
   end
 end
